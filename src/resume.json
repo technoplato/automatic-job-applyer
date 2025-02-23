@@ -1,0 +1,51 @@
+{
+    "basics": {
+        "name": "John Doe",
+        "label": "Software Engineer",
+        "email": "john.doe@example.com",
+        "phone": "(555) 555-5555",
+        "summary": "Experienced software engineer with a passion for building scalable web applications and automation tools."
+    },
+    "work": [
+        {
+            "company": "Tech Corp",
+            "position": "Senior Software Engineer",
+            "startDate": "2020-01",
+            "endDate": "Present",
+            "highlights": [
+                "Led development of cloud-based automation platform",
+                "Improved system performance by 40% through optimization",
+                "Mentored junior developers and conducted code reviews"
+            ]
+        }
+    ],
+    "education": [
+        {
+            "institution": "University of Technology",
+            "area": "Computer Science",
+            "studyType": "Bachelor",
+            "startDate": "2012-09",
+            "endDate": "2016-05"
+        }
+    ],
+    "skills": [
+        {
+            "name": "Programming Languages",
+            "keywords": [
+                "JavaScript",
+                "TypeScript",
+                "Python",
+                "Java"
+            ]
+        },
+        {
+            "name": "Frameworks & Tools",
+            "keywords": [
+                "React",
+                "Node.js",
+                "Docker",
+                "AWS"
+            ]
+        }
+    ]
+}

@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Automatic Job Applier</title>
+    <style>
+      body {
+        width: 400px;
+        padding: 16px;
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu,
+          Cantarell, sans-serif;
+      }
+      .status {
+        margin: 8px 0;
+        padding: 8px;
+        border-radius: 4px;
+        background-color: #f5f5f5;
+      }
+      .status.success {
+        background-color: #e6ffe6;
+        color: #006600;
+      }
+      .status.error {
+        background-color: #ffe6e6;
+        color: #660000;
+      }
+      #reasoning {
+        margin-top: 16px;
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        max-height: 200px;
+        overflow-y: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Automatic Job Applier</h2>
+    <div id="status" class="status">Ready to start...</div>
+    <div id="reasoning"></div>
+    <script src="popup.js"></script>
+  </body>
+</html>
