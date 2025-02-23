@@ -1,17 +1,60 @@
 import { Readability } from "@mozilla/readability";
+import { LLMService } from "./services/llm";
+import { FormField } from "./types";
 
 // Listen for messages from the background script
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (message.action === "startTailoring") {
     console.log("Starting resume tailoring process...");
+    handleTailoring();
+  }
+});
+
+async function handleTailoring() {
+  try {
+    // Update popup status
+    chrome.runtime.sendMessage({
+      status: "Extracting job details...",
+      type: "normal",
+    });
+
+    // Extract page data
     const pageSkeleton = extractPageSkeleton();
     const formFields = extractFormFields();
 
-    // TODO: Send data to LLM for processing
-    console.log("Extracted page skeleton:", pageSkeleton);
-    console.log("Extracted form fields:", formFields);
+    // Update popup status
+    chrome.runtime.sendMessage({
+      status: "Processing with AI...",
+      type: "normal",
+    });
+
+    // Get LLM service instance
+    const llmService = LLMService.getInstance();
+
+    // Create payload
+    const payload = llmService.createPayload(pageSkeleton, formFields);
+
+    // Get tailored resume
+    const { tailoredResume, reasoning } =
+      await llmService.getTailoredResume(payload);
+
+    // Update popup with results
+    chrome.runtime.sendMessage({
+      status: "Resume tailored successfully!",
+      type: "success",
+      reasoning,
+    });
+
+    // TODO: Auto-fill form with tailored resume data
+    console.log("Tailored resume:", tailoredResume);
+  } catch (error) {
+    console.error("Error during tailoring process:", error);
+    chrome.runtime.sendMessage({
+      status: "Error: " + (error as Error).message,
+      type: "error",
+    });
   }
-});
+}
 
 function extractPageSkeleton(): string {
   // Clone the document to avoid modifying the live DOM
@@ -21,7 +64,7 @@ function extractPageSkeleton(): string {
   return article ? article.content : document.body.innerHTML;
 }
 
-function extractFormFields(): Record<string, any>[] {
+function extractFormFields(): FormField[] {
   const formElements = document.querySelectorAll<HTMLElement>(
     "input, textarea, select"
   );
