@@ -9,7 +9,7 @@ As a user, I want to trigger the resume tailoring and auto-apply process using a
 
 Technical Subtasks
 
-Define Command in Manifest (≈1 Story Point):
+- [x] Define Command in Manifest (≈1 Story Point): ([commit 974fa80](https://github.com/username/automatic-job-applyer/commit/974fa80))
 
 Update manifest.json under the "commands" section to define "trigger-tailor".
 
@@ -17,7 +17,7 @@ Specify the keybinding (e.g., "Ctrl+Shift+T") and add a description.
 
 Technical Tip: Validate JSON syntax and ensure the key combination does not conflict with other system shortcuts.
 
-Implement Command Listener (≈1 Story Point):
+- [x] Implement Command Listener (≈1 Story Point): ([commit 974fa80](https://github.com/username/automatic-job-applyer/commit/974fa80))
 
 In background.ts, use the Chrome commands API:
 
@@ -30,7 +30,7 @@ console.log("Keyboard shortcut triggered – starting resume tailoring process."
 
 Technical Tip: Ensure that this file is correctly referenced in your manifest as a service worker.
 
-Add Debug Logging (≈0.5 Story Points):
+- [x] Add Debug Logging (≈0.5 Story Points): ([commit 974fa80](https://github.com/username/automatic-job-applyer/commit/974fa80))
 
 Add console logging to trace when the command is triggered.
 
@@ -45,15 +45,15 @@ As a user, I want the extension to extract a simplified skeleton of the job page
 
 Technical Subtasks
 
-Integrate a Scraping Library (≈1 Story Point):
+- [x] Integrate a Scraping Library (≈1 Story Point): ([commit 974fa80](https://github.com/username/automatic-job-applyer/commit/974fa80))
 
 Choose a library (e.g., Readability.js).
 
 Install via npm or include as a bundled script.
 
-Technical Tip: Ensure that the library is compatible with content scripts and does not conflict with the page’s own scripts.
+Technical Tip: Ensure that the library is compatible with content scripts and does not conflict with the page's own scripts.
 
-Extract Page Skeleton (≈1 Story Point):
+- [x] Extract Page Skeleton (≈1 Story Point): ([commit 974fa80](https://github.com/username/automatic-job-applyer/commit/974fa80))
 
 In content.ts, clone the document to avoid modifying the live DOM.
 
@@ -67,13 +67,13 @@ const pageSkeleton = article ? article.content : document.body.innerHTML;
 
 Technical Tip: Add error handling if the library fails and fall back gracefully.
 
-Validate the Extracted Skeleton (≈0.5 Story Points):
+- [x] Validate the Extracted Skeleton (≈0.5 Story Points): ([commit 974fa80](https://github.com/username/automatic-job-applyer/commit/974fa80))
 
 Ensure key elements (headers, paragraphs, form containers) are present.
 
-Technical Tip: Use unit tests or manual checks to verify that important HTML elements aren’t lost.
+Technical Tip: Use unit tests or manual checks to verify that important HTML elements aren't lost.
 
-Package the Skeleton (≈0.5 Story Points):
+- [x] Package the Skeleton (≈0.5 Story Points): ([commit 974fa80](https://github.com/username/automatic-job-applyer/commit/974fa80))
 
 Wrap the extracted content into a JSON object (e.g., { pageSkeleton: "..." }).
 
@@ -88,7 +88,7 @@ As a user, I want the extension to identify and extract metadata from form field
 
 Technical Subtasks
 
-Select Form Elements (≈0.5 Story Points):
+- [x] Select Form Elements (≈0.5 Story Points): ([commit 974fa80](https://github.com/username/automatic-job-applyer/commit/974fa80))
 
 Use a query selector to grab all input, textarea, and select elements.
 
@@ -96,19 +96,19 @@ const formElements = document.querySelectorAll("input, textarea, select");
 
 Technical Tip: Verify selector coverage by testing on various job pages.
 
-Determine Field Types (≈1 Story Point):
+- [x] Determine Field Types (≈1 Story Point): ([commit 974fa80](https://github.com/username/automatic-job-applyer/commit/974fa80))
 
 Loop through elements and inspect type and tagName properties.
 
 Technical Tip: Create a helper function that normalizes field types (e.g., "text", "checkbox", "radio").
 
-Extract Field Metadata (≈1 Story Point):
+- [x] Extract Field Metadata (≈1 Story Point): ([commit 974fa80](https://github.com/username/automatic-job-applyer/commit/974fa80))
 
 For each form element, extract attributes like id, name, type, placeholder, and current value.
 
 Technical Tip: Consider edge cases where attributes may be missing; use defaults as needed.
 
-Create a Schema Object (≈1 Story Point):
+- [x] Create a Schema Object (≈1 Story Point): ([commit 974fa80](https://github.com/username/automatic-job-applyer/commit/974fa80))
 
 Organize the metadata into a well-defined JSON schema that later maps to the resume JSON.
 
@@ -123,19 +123,19 @@ As a user, I want my base resume stored in JSON format to be easily integrated s
 
 Technical Subtasks
 
-Store Resume Data (≈0.5 Story Points):
+- [x] Store Resume Data (≈0.5 Story Points): ([commit 974fa80](https://github.com/username/automatic-job-applyer/commit/974fa80))
 
 Create a file src/resume.json containing your resume data.
 
 Technical Tip: Validate JSON formatting using a linter or JSON validator.
 
-Define a TypeScript Interface (≈0.5 Story Points):
+- [x] Define a TypeScript Interface (≈0.5 Story Points): ([commit 974fa80](https://github.com/username/automatic-job-applyer/commit/974fa80))
 
 Create an interface (e.g., interface Resume { ... }) in a shared file.
 
 Technical Tip: Use strict typing to catch mismatches during compilation.
 
-Load JSON Data (≈0.5 Story Points):
+- [x] Load JSON Data (≈0.5 Story Points): ([commit 974fa80](https://github.com/username/automatic-job-applyer/commit/974fa80))
 
 Import the JSON data into your TypeScript code:
 
@@ -143,7 +143,7 @@ import resumeData from "./resume.json";
 
 Technical Tip: Ensure your bundler/TypeScript config supports JSON imports.
 
-Validate Data (≈0.5 Story Points):
+- [x] Validate Data (≈0.5 Story Points): ([commit 974fa80](https://github.com/username/automatic-job-applyer/commit/974fa80))
 
 Optionally add runtime checks to ensure the JSON matches the expected interface.
 
@@ -223,7 +223,7 @@ Technical Tip: Provide user-friendly error messages in case of failure.
 7. UI for Reasoning Display
 
 User Story:
-As a user, I want to see the LLM’s reasoning for the tailored resume on a popup so that I can understand how the data was processed.
+As a user, I want to see the LLM's reasoning for the tailored resume on a popup so that I can understand how the data was processed.
 
 Technical Subtasks
 
@@ -244,7 +244,7 @@ Technical Tip: Listen for messages from the background or content scripts to upd
 
 Add User Interaction Controls (≈0.5 Story Points):
 
-Optionally include a “refresh” or “close” button with corresponding event listeners.
+Optionally include a "refresh" or "close" button with corresponding event listeners.
 
 Technical Tip: Ensure accessibility and proper event delegation.
 
@@ -253,7 +253,7 @@ Technical Tip: Ensure accessibility and proper event delegation.
 8. Auto-Fill Application Form
 
 User Story:
-As a user, I want the tailored resume data to automatically populate the job application form so that I don’t have to fill out repetitive fields manually.
+As a user, I want the tailored resume data to automatically populate the job application form so that I don't have to fill out repetitive fields manually.
 
 Technical Subtasks
 
@@ -294,7 +294,7 @@ Technical Subtasks
 
 Implement Status Indicators (≈1 Story Point):
 
-Display messages like “Scraping in progress…”, “LLM processing…”, and “Form auto-filled!” within the popup UI.
+Display messages like "Scraping in progress...", "LLM processing...", and "Form auto-filled!" within the popup UI.
 
 Technical Tip: Use a progress bar or spinner for long-running operations.
 
@@ -302,7 +302,7 @@ Use Chrome Notifications (≈0.5 Story Points):
 
 Integrate chrome.notifications.create to show system-level notifications when significant events occur.
 
-Technical Tip: Ensure notifications follow Chrome’s guidelines for user permissions and clarity.
+Technical Tip: Ensure notifications follow Chrome's guidelines for user permissions and clarity.
 
 Dynamic UI Updates (≈0.5 Story Points):
 
@@ -402,7 +402,7 @@ Technical Tip: Aim for tests that cover edge cases and simulate DOM interactions
 13. Manifest and Permissions Setup
 
 User Story:
-As a developer, I want a correctly configured manifest with the required permissions so that the extension operates within Chrome’s security model.
+As a developer, I want a correctly configured manifest with the required permissions so that the extension operates within Chrome's security model.
 
 Technical Subtasks
 
@@ -443,7 +443,7 @@ Configure Source Maps (≈0.5 Story Points):
 
 Ensure tsconfig.json is set to generate source maps for debugging.
 
-Technical Tip: Check that source maps are correctly referenced in Chrome’s DevTools.
+Technical Tip: Check that source maps are correctly referenced in Chrome's DevTools.
 
 (Optional) Configure Bundler (≈1 Story Point):
 
@@ -468,7 +468,7 @@ Technical Subtasks
 
 Load Extension in Chrome (≈0.5 Story Points):
 
-Open chrome://extensions/, enable Developer Mode, and “Load unpacked” your project directory.
+Open chrome://extensions/, enable Developer Mode, and "Load unpacked" your project directory.
 
 Technical Tip: Document the steps in the README for team onboarding.
 
@@ -482,7 +482,7 @@ Iterative Development and Reloading (≈0.5 Story Points):
 
 Recompile the TypeScript after changes and reload the extension.
 
-Technical Tip: Use automated reload extensions (e.g., “Extension Reloader”) for faster iterations.
+Technical Tip: Use automated reload extensions (e.g., "Extension Reloader") for faster iterations.
 
 Insert Detailed Debug Logging (≈0.5 Story Points):
 
@@ -499,9 +499,9 @@ As a user, I want the extension to automatically submit the job application once
 
 Technical Subtasks
 
-Detect the “Apply” Button (≈1 Story Point):
+Detect the "Apply" Button (≈1 Story Point):
 
-In content.ts, add logic to locate the submit or “Apply” button based on common selectors or attributes.
+In content.ts, add logic to locate the submit or "Apply" button based on common selectors or attributes.
 
 Technical Tip: Use query selectors that are resilient to different page structures.
 
